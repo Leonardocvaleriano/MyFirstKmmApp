@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.androidLibrary)
     //for deserializing JSON responses into objects of entity classes used to process network operations.
     kotlin("plugin.serialization") version "1.9.21"
-
 }
 
 kotlin {
@@ -25,33 +24,32 @@ kotlin {
             isStatic = true
         }
     }
-    val ktorVersion = "2.3.5"
 
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
 
-            // date time api
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+            // date time api to retrieve the system date
+            implementation(libs.kotlinx.datetime)
 
             // Courotines for write asynchronous code
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+            implementation(libs.kotlinx.coroutines.core)
 
             // Ktor stuffs
 
             // Ktor Client
-            implementation("io.ktor:ktor-client-core:$ktorVersion")
+            implementation(libs.ktor.client.core)
             // responsible for serializing/deserializing the content in a specific format.
-            implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+            implementation(libs.ktor.client.content.negotiation)
             // Instruct Ktor to use the JSON format and kotlinx.serialization as a serialization library.
-            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+            implementation(libs.ktor.serialization.kotlinx.json)
         }
 
         androidMain.dependencies {
-            implementation("io.ktor:ktor-client-android:$ktorVersion")
+            implementation(libs.ktor.client.android)
         }
         iosMain.dependencies {
-            implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+            implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
