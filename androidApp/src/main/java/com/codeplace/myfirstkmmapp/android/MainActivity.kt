@@ -49,6 +49,6 @@ fun GreetingView(phrases: List<String>) {
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        GreetingView(listOf("Hello","plataform"))
+        GreetingView(listOf("Hello","plataform", "days left new year"))
     }
 }
